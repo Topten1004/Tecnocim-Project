@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{4683D5FD-0F19-46AF-B6DE-221B63844F08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1E9B538F-705E-49AC-9C4A-27B4A32FDA61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crosscutting", "Crosscutting", "{25B20859-2BC6-4E88-8368-1D3A0CC629E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{712636D3-B895-4D58-BBFF-AF9451787B49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tecnocim.Alia.DataInfrastructure", "Infrastructure\Tecnocim.Alia.DataInfrastructure\Tecnocim.Alia.DataInfrastructure.csproj", "{994C7A5B-300D-456B-AA38-76A7276089CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tecnocim.Alia.Domain", "Domain\Tecnocim.Alia.Domain\Tecnocim.Alia.Domain.csproj", "{BA0BB1E9-7136-4F4B-A432-FADA800E4EBA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tecnocim.Alia.Application", "Application\Tecnocim.Alia.Application\Tecnocim.Alia.Application.csproj", "{62B1745C-0A1C-4905-A48B-7BDC3FB70A97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tecnocim.Alia.Crosscutting", "Crosscutting\Tecnocim.Alia.Crosscutting\Tecnocim.Alia.Crosscutting.csproj", "{58C86678-E9B8-4C71-B4F5-D01936F00FDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{6C817C1C-5ED9-4AC5-9B9C-571F3FAA1F2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vue-backend", "Api\vue-backend.csproj", "{5C7E1682-8E5C-476E-B9CF-7F1A2818F414}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tecnocim.Alia.Intermedia.Domain", "Domain\Tecnocim.Alia.Intermedia.Domain\Tecnocim.Alia.Intermedia.Domain.csproj", "{0A625A98-53D7-420B-85E9-DFF88B0EB2A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tecnocim.Alia.Intermedia.DataInfrastructure", "Infrastructure\Tecnocim.Alia.Intermedia.DataInfrastructure\Tecnocim.Alia.Intermedia.DataInfrastructure.csproj", "{33384513-DD7A-480B-A624-3E28FADA7981}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Documentation", "0.Documentation", "{99F56A9F-CE73-4E18-ACEF-3F41B06DC73F}"
+	ProjectSection(SolutionItems) = preProject
+		Intro.md = Intro.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{994C7A5B-300D-456B-AA38-76A7276089CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994C7A5B-300D-456B-AA38-76A7276089CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994C7A5B-300D-456B-AA38-76A7276089CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994C7A5B-300D-456B-AA38-76A7276089CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0BB1E9-7136-4F4B-A432-FADA800E4EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0BB1E9-7136-4F4B-A432-FADA800E4EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0BB1E9-7136-4F4B-A432-FADA800E4EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0BB1E9-7136-4F4B-A432-FADA800E4EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B1745C-0A1C-4905-A48B-7BDC3FB70A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B1745C-0A1C-4905-A48B-7BDC3FB70A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B1745C-0A1C-4905-A48B-7BDC3FB70A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B1745C-0A1C-4905-A48B-7BDC3FB70A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58C86678-E9B8-4C71-B4F5-D01936F00FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C86678-E9B8-4C71-B4F5-D01936F00FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C86678-E9B8-4C71-B4F5-D01936F00FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C86678-E9B8-4C71-B4F5-D01936F00FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7E1682-8E5C-476E-B9CF-7F1A2818F414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7E1682-8E5C-476E-B9CF-7F1A2818F414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7E1682-8E5C-476E-B9CF-7F1A2818F414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7E1682-8E5C-476E-B9CF-7F1A2818F414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A625A98-53D7-420B-85E9-DFF88B0EB2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A625A98-53D7-420B-85E9-DFF88B0EB2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A625A98-53D7-420B-85E9-DFF88B0EB2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A625A98-53D7-420B-85E9-DFF88B0EB2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33384513-DD7A-480B-A624-3E28FADA7981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33384513-DD7A-480B-A624-3E28FADA7981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33384513-DD7A-480B-A624-3E28FADA7981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33384513-DD7A-480B-A624-3E28FADA7981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{994C7A5B-300D-456B-AA38-76A7276089CF} = {712636D3-B895-4D58-BBFF-AF9451787B49}
+		{BA0BB1E9-7136-4F4B-A432-FADA800E4EBA} = {1E9B538F-705E-49AC-9C4A-27B4A32FDA61}
+		{62B1745C-0A1C-4905-A48B-7BDC3FB70A97} = {4683D5FD-0F19-46AF-B6DE-221B63844F08}
+		{58C86678-E9B8-4C71-B4F5-D01936F00FDF} = {25B20859-2BC6-4E88-8368-1D3A0CC629E0}
+		{5C7E1682-8E5C-476E-B9CF-7F1A2818F414} = {6C817C1C-5ED9-4AC5-9B9C-571F3FAA1F2A}
+		{0A625A98-53D7-420B-85E9-DFF88B0EB2A3} = {1E9B538F-705E-49AC-9C4A-27B4A32FDA61}
+		{33384513-DD7A-480B-A624-3E28FADA7981} = {712636D3-B895-4D58-BBFF-AF9451787B49}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3929A3F9-D195-4A6B-B611-95E8E2969D83}
+	EndGlobalSection
+EndGlobal

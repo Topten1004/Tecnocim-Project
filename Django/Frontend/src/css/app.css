@@ -1,0 +1,183 @@
+/* ALIA */
+:root {
+  --alia: #008ea5;
+}
+.background-alia-gradiente {
+  background: linear-gradient(90deg, rgba(0,200,200,1) 0%, rgba(33,56,101,1) 100%);
+}
+
+.background-alia-gradiente-dark {
+  background: linear-gradient(90deg, rgba(0,200,200,1) -100%, rgba(33,56,101,1) 100%);
+}
+
+.text-alia {
+  color: var(--alia);
+}
+
+.background-alia {
+  background-color: var(--alia);
+}
+
+.background-header-alia {
+  background: linear-gradient(270deg, #5ab3bc 0%, #213c67 100%);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--alia);
+  --bs-btn-border-color: var(--alia);
+  --bs-btn-hover-bg: var(--alia);
+  --bs-btn-hover-border-color: var(--alia);
+  --bs-btn-active-bg: var(--alia);
+  --bs-btn-disabled-bg: var(--alia);
+  --bs-btn-disabled-border-color: var(--alia);
+}
+
+.logo {
+  width: 100%;
+}
+.logo > div {
+  background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 33px;
+  margin: auto;
+}
+
+.login {
+  max-width: 350px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--alia); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #008fa5c7; 
+}
+
+/* Select2 */
+/* .select-two.form-control {
+  padding: 0;
+}
+
+.select2.select2-container.select2-container--default.select2-container--below {
+  width: 100%!important;
+} */
+
+.modal-backdrop {
+  background-color: #00000080;
+}
+
+.select2-container .select2-selection--single {
+  height: 2.3rem!important;
+  padding: 4px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  display: none;
+}
+
+.select2-container--default .select2-selection--single {
+  border: 1px solid #ced4da !important;
+  border-radius: 6px!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #000!important;
+}
+
+tr.con-activo {
+  background: linear-gradient(90deg, #5ab4bd 0%, #1e3763 100%);
+  color: #FFF;
+}
+
+tr.con-activo:hover {
+  color: #FFF;
+}
+
+tr.con-activo.sin-asociar {
+  background: #ffb307;
+  color: #000;
+}
+
+.table-alia {
+  --bs-table-bg: var(--alia);
+}
+
+.dropdown-menu {
+  z-index: 1022;
+}
+
+.router-link-exact-active {
+  color: var(--alia);
+}
+
+thead.sticky-top {
+  z-index: 1018;
+}
+
+.bg-lightgreen {
+  background-color: #ebf1de !important;
+}
+
+.bg-lightpink {
+  background-color: #f2dcdb !important;
+}
+
+.text-lightgreen {
+  color: lightgreen;
+}
+
+.text-orangered {
+  color: orangered;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: var(--alia);
+  color: white;
+  font-weight: bolder;
+  border: 0;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: red;
+}
+
+.background-alia-intensisty-01 {
+  background-color: rgba(0, 142, 165, 0.1);
+}
+
+.background-alia-intensisty-02 {
+  background-color: rgba(0, 142, 165, 0.2);
+}
+
+.background-alia-intensisty-03 {
+  background-color: rgba(0, 142, 165, 0.3);
+}
+
+.background-alia-intensisty-04 {
+  background-color: rgba(0, 142, 165, 0.4);
+}
+
+.ps-6 {
+  padding-left: 4rem !important;
+}

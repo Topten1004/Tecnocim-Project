@@ -1,0 +1,127 @@
+name: Django CI [Extractor]
+
+on:
+  push:
+    branches: [ "staging", "main" ]
+    
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      branch_name: ${{ steps.branch-name.outputs.current_branch }}
+
+    steps:
+    - name: Get branch name
+      id: branch-name
+      uses: tj-actions/branch-names@v6
+    
+  staging:
+    needs: build
+    if: ${{ needs.build.outputs.branch_name != 'main' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.4
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          mv ./requirements.txt ./app/
+
+      #- name: Run Tests
+      #  run: |
+      #    python manage.py test
+    
+      - name: Saving .env.local && Recreate folder
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.WINDOWS_SSH_HOST }}
+          username: ${{ secrets.WINDOWS_SSH_USER }}
+          password: ${{ secrets.WINDOWS_SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            call move C:\Extractor_staging\.env.local C:\ && call rmdir /s /q C:\Extractor_staging && call mkdir C:\Extractor_staging && call move C:\.env.local C:\Extractor_staging\
+
+      - name: Upload build
+        id: upload
+        uses: Creepios/sftp-action@v1.0.3
+        with:
+          host: '${{ secrets.WINDOWS_SSH_HOST }}'
+          port: ${{ secrets.SSH_PORT }}
+          username: '${{ secrets.WINDOWS_SSH_USER }}'
+          password: '${{ secrets.WINDOWS_SSH_PASSWORD }}'
+          localPath: './app'
+          remotePath: '/C:/Extractor_staging/'
+
+      - name: Installing dependencies && Restart IIS [Server]
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.WINDOWS_SSH_HOST }}
+          username: ${{ secrets.WINDOWS_SSH_USER }}
+          password: ${{ secrets.WINDOWS_SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            call pip install -r C:\Extractor_staging\requirements.txt && call python C:\Extractor_staging\manage.py migrate --no-input && call python C:\Extractor_staging\manage.py loaddata fixtures
+
+  production:
+    needs: build
+    if: ${{ needs.build.outputs.branch_name == 'main' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.4
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          mv ./requirements.txt ./app/
+
+      #- name: Run Tests
+      #  run: |
+      #    python manage.py test
+      
+      - name: Saving .env.local && Recreate folder
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.WINDOWS_SSH_HOST }}
+          username: ${{ secrets.WINDOWS_SSH_USER }}
+          password: ${{ secrets.WINDOWS_SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            call move C:\Extractor\.env.local C:\ && call rmdir /s /q C:\Extractor && call mkdir C:\Extractor && call move C:\.env.local C:\Extractor\
+
+      - name: Upload build
+        id: upload
+        uses: Creepios/sftp-action@v1.0.3
+        with:
+          host: '${{ secrets.WINDOWS_SSH_HOST }}'
+          port: ${{ secrets.SSH_PORT }}
+          username: '${{ secrets.WINDOWS_SSH_USER }}'
+          password: '${{ secrets.WINDOWS_SSH_PASSWORD }}'
+          localPath: './app'
+          remotePath: '/C:/Extractor/'
+
+      - name: Installing dependencies && Restart IIS [Server]
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.WINDOWS_SSH_HOST }}
+          username: ${{ secrets.WINDOWS_SSH_USER }}
+          password: ${{ secrets.WINDOWS_SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            call pip install -r C:\Extractor\requirements.txt && call python C:\Extractor\manage.py migrate --no-input && call python C:\Extractor\manage.py loaddata fixtures

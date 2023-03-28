@@ -1,0 +1,58 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ staging, main ]
+
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/smartdebt # ${{ github.actor }}/smartdebt
+
+jobs:
+
+  build-container:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: Get branch name
+      id: branch-name
+      uses: tj-actions/branch-names@v6
+      
+    - name: Log into registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+    
+    - name: Build the Docker image
+      run: docker build --no-cache -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ steps.branch-name.outputs.current_branch }} .
+    
+    - name: Push image into registry
+      run: |
+        IMAGE_ID=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ steps.branch-name.outputs.current_branch }}
+        docker push $IMAGE_ID
+        
+    - name: Launch deploy on Staging server
+      if: ${{ steps.branch-name.outputs.current_branch != 'main' }}
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.IP_STAGING }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          sh ~/deploy.sh
+    
+    - name: Launch deploy on Production server
+      if: ${{ steps.branch-name.outputs.current_branch == 'main' }}
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.IP_PRODUCTION }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          sh ~/deploy.sh

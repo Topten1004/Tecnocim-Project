@@ -1,0 +1,41 @@
+name: Node.js CI [SmartDebt Front Production]
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      
+      - run: npm install
+      # - run: npm test
+      - run: npm run build
+
+      - name: Upload build
+        id: build
+        uses: Creepios/sftp-action@v1.0.3
+        with:
+          host: '${{ secrets.SSH_HOST }}'
+          port: ${{ secrets.SSH_PORT }}
+          username: '${{ secrets.SSH_USER }}'
+          password: '${{ secrets.SSH_PASSWORD }}'
+          localPath: './dist'
+          remotePath: '/C:/deploy/front/prod'
+          
+      - name: Execute iisreset
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            call %windir%\system32\inetsrv\appcmd stop site /site.name:"smartdebtfrontprod" && call %windir%\system32\inetsrv\appcmd start site /site.name:"smartdebtfrontprod"

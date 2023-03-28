@@ -1,0 +1,4 @@
+C:\pukkas\aliatecnocim\codigo-principal-apuntando-git\smartdebtnet-cli\ProyectoVue\obj\Debug\proyectovue.esproj.SuggestedBindingRedirects.cache
+C:\pukkas\aliatecnocim\codigo-principal-apuntando-git\smartdebtnet-cli\ProyectoVue\obj\Debug\proyectovue.esproj.CoreCompileInputs.cache
+C:\pukkas\aliatecnocim\frontend\ProyectoVue\obj\Debug\proyectovue.esproj.SuggestedBindingRedirects.cache
+C:\pukkas\aliatecnocim\frontend\ProyectoVue\obj\Debug\proyectovue.esproj.CoreCompileInputs.cache
